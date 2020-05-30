@@ -126,3 +126,4 @@ STATIC_URL = '/static/'
 
 # Auth redirects
 LOGIN_REDIRECT_URL = 'pages:pages'
+LOGOUT_REDIRECT_URL = 'home'
