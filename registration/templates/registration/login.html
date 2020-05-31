@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Iniciar sesión{% endblock %}
+{% block title %}Iniciar sesion{% endblock %}
 {% block content %}
   {% if request.user.is_authenticated %}
     <script>window.location.href = '/accounts/profile/'; </script>
@@ -14,9 +14,9 @@
           <p style="color:green;">Usuario registrado correctamente, ya puedes identificarte.</p>
         {% endif %}
         <form action="" method="post">{% csrf_token %}
-          <h3 class="mb-4">Iniciar sesión</h3>
+          <h3 class="mb-4">Iniciar sesion</h3>
           {% if form.non_field_errors %}
-            <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+            <p style="color:red">Usuario o contraseña incorrectos prueba de nuevo.</p>
           {% endif %}
           <p>
             <input type="text" name="username" autofocus maxlength="254" required
@@ -29,7 +29,7 @@
           <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
         </form>
         <p>
-          ¿Ha olvidado su clave? Puede restaurarla <a href="{% url 'password_reset' %}">aquí</a>.
+          ¿Ha olvidado su clave? Puede restaurarla <a href="{% url 'password_reset' %}">aqui</a>.
         </p>
       </div>
     </div>
