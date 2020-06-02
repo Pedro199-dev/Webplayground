@@ -1,8 +1,8 @@
-from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404, redirect
+from django.http import Http404, JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Thread
 
@@ -22,3 +22,21 @@ class ThreadDetail(DetailView):
         if self.request.user not in obj.users.all():
             raise Http404()
         return obj
+
+def add_message(request, pk):
+    print(request.GET)
+    json_response = {'created':False}
+    """
+    if request.user.is_authenticated:
+        content = request.GET.get('content', None)
+        if content:
+            thread = get_object_or_404(Thread, pk=pk)  
+            message = Message.objects.create(user=request.user, content=content)
+            thread.messages.add(message)
+            json_response['created'] = True
+            if len(thread.messages.all()) is 1:
+                json_response['first'] = True
+    else:
+        raise Http404("User is not authenticated")"""
+
+    return JsonResponse(json_response)
