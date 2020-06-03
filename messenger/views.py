@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, JsonResponse
 from django.contrib.auth.decorators import login_required
-from .models import Thread
+from .models import Thread, Message
 
 
 # Create your views here.
@@ -26,8 +26,8 @@ class ThreadDetail(DetailView):
 def add_message(request, pk):
     print(request.GET)
     json_response = {'created':False}
-    """
     if request.user.is_authenticated:
+        pass
         content = request.GET.get('content', None)
         if content:
             thread = get_object_or_404(Thread, pk=pk)  
@@ -37,6 +37,6 @@ def add_message(request, pk):
             if len(thread.messages.all()) is 1:
                 json_response['first'] = True
     else:
-        raise Http404("User is not authenticated")"""
+        raise Http404("User is not authenticated")
 
     return JsonResponse(json_response)
